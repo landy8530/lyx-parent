@@ -1,0 +1,10 @@
+
+1 把我们的lyx-sys-service SOA服务打包放入到linux下（注意lib依赖库也要一并上传）
+2 在linux下建立 mkdir -p /usr/local/workspace/sys-service 文件夹 然后把jar放到其中
+-----------------------------测试部署--------------------------
+3 运行 java -jar lyx-sys-service.jar & 
+4 ok我们前端启动web服务，可以进行测试！
+
+-----------------------------生产部署--------------------------
+3 编写脚本 sys-service.sh （注意不要把sh脚步和lyx-sys-service.jar的名字写成一致）
+4 给当前的脚本赋予执行权限（chmod 744 sys-service.sh），然后去调用start、restart或者stop。
