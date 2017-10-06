@@ -5,15 +5,16 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.alibaba.dubbo.common.serialize.support.SerializationOptimizer;
-
-import lyx.sys.entity.SysUser;
+import com.alibaba.fastjson.JSONObject;
 
 public class SerializationOptimizerImpl implements SerializationOptimizer {
 
     public Collection<Class> getSerializableClasses() {
         List<Class> classes = new LinkedList<Class>();
         //这里可以把所有需要进行序列化的类进行添加
-        classes.add(SysUser.class);
+//        classes.add(SysUser.class);
+        //没有实体类了，所有都用json表示
+        classes.add(JSONObject.class);
         return classes;
     }
 }

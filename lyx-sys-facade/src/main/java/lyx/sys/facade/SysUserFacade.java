@@ -1,5 +1,7 @@
 package lyx.sys.facade;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -9,40 +11,28 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.alibaba.dubbo.rpc.protocol.rest.support.ContentType;
+import com.alibaba.fastjson.JSONObject;
 
-import lyx.sys.entity.SysUser;
-
-@Path("/sysUserService") //Rest风格
+//rest服务的注解需要在接口端
+@Path("/sysUserService")
 @Consumes({MediaType.APPLICATION_JSON, MediaType.TEXT_XML})
 @Produces({ContentType.APPLICATION_JSON_UTF_8, ContentType.TEXT_XML_UTF_8})
 public interface SysUserFacade {
-
-	@GET //Rest风格
-    @Path("/testget") //Rest风格
-	public void testget();
 	
-    @GET
-    @Path("/getUser")
-	public SysUser getUser();
+	//对外不提供服务的时候就可以不加path注解
+	@POST
+	public String generateKey() throws Exception;
 	
 	@GET
-	@Path("/get/{id : \\d+}")
-	public SysUser getUser(@PathParam(value = "id") Integer id);
-	
-	@GET
-	@Path("/get/{id : \\d+}/{name}")
-	public SysUser getUser(@PathParam(value = "id") Integer id, @PathParam(value = "name") String name);
-	
-    @POST
-    @Path("/testpost")
-	public void testpost();
-	
-    @POST
-    @Path("/postUser")
-	public SysUser postUser(SysUser user);
+	@Path("/getById/{id}") 
+	public JSONObject getById(@PathParam(value = "id") String id) throws Exception;
 	
 	@POST
-	@Path("/post/{id}")
-	public SysUser postUser(@PathParam(value = "id") String id);
+	@Path("/getList")
+	public List<JSONObject> getList() throws Exception;
+	
+	@POST
+	public int insert(JSONObject jsonObject) throws Exception;
+	
 	
 }

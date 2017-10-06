@@ -24,7 +24,7 @@ request.setAttribute("base", request.getContextPath());
 
 Ext.onReady(function(){
 	
-	Ext.MessageBox.alert('提示信息','Welcome to ExtJS World!!${user.name}');
+	Ext.MessageBox.alert('提示信息','Welcome to ExtJS World!!${user.USER_NAME}');
 	
 });
 
@@ -33,6 +33,6 @@ Ext.onReady(function(){
 </head>
 <body>
 Hello World! This is lyx-sys Page!
-userName:${user.name }
+userName:${user.USER_NAME }
 </body>
 </html>
